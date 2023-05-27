@@ -46,7 +46,7 @@ public class Main {
         }
         double testingAverage = total / testResults.size();
 
-        resultLogger.logResults("Test took an average of " + String.format("%.3f", testingAverage) + " over 10 tests.");
+        resultLogger.logResults("Test took an average of " + String.format("%.3f", testingAverage) + "s over 10 tests.");
     }
 
     public static void findVariable() {
