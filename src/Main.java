@@ -9,7 +9,7 @@ public class Main {
 
     public static void main(String[] args) throws IOException {
 
-        int testIterations = 10_000_000;
+        int testIterations = 100_000_000;
         benchmarkTest(testIterations);
 
     }
