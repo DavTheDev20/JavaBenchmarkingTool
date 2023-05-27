@@ -1,13 +1,13 @@
-import com.google.common.base.Stopwatch;
 import oshi.SystemInfo;
 import oshi.hardware.HardwareAbstractionLayer;
 
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 
 public class Main {
 
     public static void main(String[] args) throws IOException {
-
 
         int testIterations = 10_000_000;
         benchmarkTest(testIterations);
@@ -20,16 +20,33 @@ public class Main {
         HardwareAbstractionLayer hardware = systemInfo.getHardware();
         System.out.println(hardware.getProcessor().getProcessorIdentifier().getName());
         System.out.println(systemInfo.getOperatingSystem());
-        Stopwatch timer = Stopwatch.createStarted();
-        for (int i = 0; i<=iterations; i++) {
-            findVariable();
+
+        List<Double> testResults = new ArrayList<>();
+
+        for (int i = 0; i <= 10; i++) {
+            long startTime = System.nanoTime();
+            // Stopwatch timer = Stopwatch.createStarted();
+            for (int x = 0; x <= iterations; x++) {
+                findVariable();
+            }
+            // Stopwatch testLength = timer.stop();
+            long endTime = System.nanoTime();
+            double testLength = (double) (endTime - startTime) / 1_000_000_000;
+            testResults.add(i, testLength);
+
+            String resultString = "Your PC took " + String.format("%.2f", testLength) + "s" + " to run through "
+                    + iterations + " iterations.";
+
+            System.out.println(resultString);
         }
-        Stopwatch testLength = timer.stop();
 
-        String resultString = "Your PC took " + testLength + " to run through " + iterations + " iterations.";
+        double total = 0;
+        for (double timeResult : testResults) {
+            total += timeResult;
+        }
+        double testingAverage = total / testResults.size();
 
-        System.out.println(resultString);
-        resultLogger.logResults("Test took " + testLength);
+        resultLogger.logResults("Test took an average of " + String.format("%.3f", testingAverage) + " over 10 tests.");
     }
 
     public static void findVariable() {
@@ -38,7 +55,7 @@ public class Main {
         double var = 0;
         String equationString = "";
 
-        String[] operations = {"Addition", "Subtraction", "Multiplication", "Division"};
+        String[] operations = { "Addition", "Subtraction", "Multiplication", "Division" };
 
         String testOperation = operations[(int) Math.round(Math.random() * 3)];
 
@@ -67,7 +84,7 @@ public class Main {
 
         if (testOperation.equals("Addition")) {
             equationString = x + " + " + var + " = " + z;
-        }  else if (testOperation.equals("Subtraction")) {
+        } else if (testOperation.equals("Subtraction")) {
             equationString = x + " - " + var + " = " + z;
         } else if (testOperation.equals("Multiplication")) {
             equationString = x + " × " + var + " = " + z;
@@ -75,6 +92,6 @@ public class Main {
             equationString = x + " ÷ " + var + " = " + z;
         }
 
-//        System.out.println(equationString);
+        // System.out.println(equationString);
     }
 }
