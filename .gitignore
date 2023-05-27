@@ -3,6 +3,9 @@
 #!**/src/main/**/out/
 #!**/src/test/**/out/
 
+#### Application Specific ####
+results.txt
+
 ### Eclipse ###
 .apt_generated
 .classpath

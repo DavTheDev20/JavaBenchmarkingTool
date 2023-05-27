@@ -2,13 +2,20 @@ import com.google.common.base.Stopwatch;
 import oshi.SystemInfo;
 import oshi.hardware.HardwareAbstractionLayer;
 
+import java.io.IOException;
+
 public class Main {
-    public static void main(String[] args) {
+
+    public static void main(String[] args) throws IOException {
+
+
         int testIterations = 10_000_000;
         benchmarkTest(testIterations);
+
     }
 
-    public static void benchmarkTest(int iterations) {
+    public static void benchmarkTest(int iterations) throws IOException {
+        ResultLogger resultLogger = new ResultLogger();
         SystemInfo systemInfo = new SystemInfo();
         HardwareAbstractionLayer hardware = systemInfo.getHardware();
         System.out.println(hardware.getProcessor().getProcessorIdentifier().getName());
@@ -17,10 +24,12 @@ public class Main {
         for (int i = 0; i<=iterations; i++) {
             findVariable();
         }
+        Stopwatch testLength = timer.stop();
 
-        System.out.println("Your PC took " + timer.stop() + " to run through " + iterations + " iterations.");
+        String resultString = "Your PC took " + testLength + " to run through " + iterations + " iterations.";
 
-
+        System.out.println(resultString);
+        resultLogger.logResults("Test took " + testLength);
     }
 
     public static void findVariable() {
