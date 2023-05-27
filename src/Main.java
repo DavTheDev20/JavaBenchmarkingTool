@@ -53,7 +53,6 @@ public class Main {
         double x = Math.random() * 1_000_000;
         double z = Math.random() * 1_000_000;
         double var = 0;
-        String equationString = "";
 
         String[] operations = { "Addition", "Subtraction", "Multiplication", "Division" };
 
@@ -81,17 +80,5 @@ public class Main {
             default:
                 return;
         }
-
-        if (testOperation.equals("Addition")) {
-            equationString = x + " + " + var + " = " + z;
-        } else if (testOperation.equals("Subtraction")) {
-            equationString = x + " - " + var + " = " + z;
-        } else if (testOperation.equals("Multiplication")) {
-            equationString = x + " × " + var + " = " + z;
-        } else if (testOperation.equals("Division")) {
-            equationString = x + " ÷ " + var + " = " + z;
-        }
-
-        // System.out.println(equationString);
     }
 }
