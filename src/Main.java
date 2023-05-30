@@ -11,6 +11,7 @@ public class Main {
 
         int testIterations = 100_000_000;
         benchmarkTest(testIterations);
+        System.out.println("Test Complete");
 
     }
 
@@ -46,7 +47,8 @@ public class Main {
         }
         double testingAverage = total / testResults.size();
 
-        resultLogger.logResults("Test took an average of " + String.format("%.3f", testingAverage) + "s over 10 tests.");
+        resultLogger
+                .logResults("Test took an average of " + String.format("%.3f", testingAverage) + "s over 10 tests.");
     }
 
     public static void findVariable() {
