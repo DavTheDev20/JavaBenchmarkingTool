@@ -10,6 +10,7 @@ public class Main {
     public static void main(String[] args) throws IOException {
 
         int testIterations = 100_000_000;
+        System.out.println("\nTest Starting...\n");
         benchmarkTest(testIterations);
         System.out.println("Test Complete");
 

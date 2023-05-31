@@ -3,7 +3,7 @@ import java.io.IOException;
 import java.time.LocalDateTime;
 
 public class ResultLogger {
-    public FileWriter writer = new FileWriter("results.txt", true);
+    private FileWriter writer = new FileWriter("results.txt", true);
 
     public ResultLogger() throws IOException {
     }
