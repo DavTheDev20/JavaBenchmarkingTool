@@ -10,7 +10,15 @@ public class Main {
     public static void main(String[] args) throws IOException {
 
         int testIterations = 100_000_000;
-        System.out.println("\nTest Starting...\n");
+//        System.out.println("\nTest Starting...\n");
+        System.out.println("\n" +
+                "       _                    ____                  _                          _      _______          _ \n" +
+                "      | |                  |  _ \\                | |                        | |    |__   __|        | |\n" +
+                "      | | __ ___   ____ _  | |_) | ___ _ __   ___| |__  _ __ ___   __ _ _ __| | __    | | ___   ___ | |\n" +
+                "  _   | |/ _` \\ \\ / / _` | |  _ < / _ \\ '_ \\ / __| '_ \\| '_ ` _ \\ / _` | '__| |/ /    | |/ _ \\ / _ \\| |\n" +
+                " | |__| | (_| |\\ V / (_| | | |_) |  __/ | | | (__| | | | | | | | | (_| | |  |   <     | | (_) | (_) | |\n" +
+                "  \\____/ \\__,_| \\_/ \\__,_| |____/ \\___|_| |_|\\___|_| |_|_| |_| |_|\\__,_|_|  |_|\\_\\    |_|\\___/ \\___/|_|\n" +
+                "                                                                                                       ");
         benchmarkTest(testIterations);
         System.out.println("Test Complete");
 
